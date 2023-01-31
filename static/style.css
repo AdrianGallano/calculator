@@ -1,8 +1,8 @@
 :root {
-	--background: black;
+	--background: rgb(8, 8, 8);
 	--text: rgb(220, 219, 219);
-	--inner-button: rgba(70, 70, 70, 0.700);
-	--outer-button: rgba(50, 50, 50, 0.700);
+	--inner-button: rgba(70, 70, 70, 0.15);
+	--outer-button: rgba(50, 50, 50, 0.15);
 	font-size: 10px;
 }
 
@@ -13,14 +13,27 @@
 }
 
 body {
-	background: linear-gradient(to bottom left, var(--background), rgb(30, 29, 29));
+	background: linear-gradient(to bottom left, var(--background), rgb(14, 14, 14));
 	padding: .5rem;
-
 }
 
 .calculator {
 	height: calc(100vh - 1em);
 	width: 70vw;
+}
+
+.linear-bg{
+	height: 200px;
+	width: 200px;
+	position: absolute;
+	z-index: -1;
+	right: 800px;
+	top: -200px;
+	
+	filter: blur(150px);
+	border-radius: 50%;
+	opacity: .9;
+	background-image: linear-gradient(-45deg,rgb(249, 48, 38) 50%, rgb(43, 114, 255) 50%);
 }
 
 .screen {
@@ -41,6 +54,7 @@ body {
 	flex-direction: column;
 	height: 70%;
 	gap: .4rem;
+	z-index: 1;
 }
 
 .row {
@@ -64,6 +78,7 @@ body {
 	border-radius: 7px;
 	font-size: 2rem;
 	user-select: none;
+	backdrop-filter: blur(10px);
 
 	/* ANIMATION */
 	transition: 200ms ease-in-out;
