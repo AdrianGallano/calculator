@@ -1,0 +1,104 @@
+:root {
+	--background: black;
+	--text: rgb(220, 219, 219);
+	--inner-button: rgba(70, 70, 70, 0.700);
+	--outer-button: rgba(50, 50, 50, 0.700);
+	font-size: 10px;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: linear-gradient(to bottom left, var(--background), rgb(30, 29, 29));
+	padding: .5rem;
+
+}
+
+.calculator {
+	height: calc(100vh - 1em);
+	width: 70vw;
+}
+
+.screen {
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+
+	/* box customization */
+	height: 30%;
+	width: 100%;
+	padding: 3rem .5rem;
+	color: var(--text);
+	font-size: 4rem;
+}
+
+#keypad {
+	display: flex;
+	flex-direction: column;
+	height: 70%;
+	gap: .4rem;
+}
+
+.row {
+	display: flex;
+	flex: 1;
+	gap: .4rem;
+}
+
+.btn {
+	/* POSITIONING */
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+
+	/* BOX CUSTOMIZATION */
+	background-color: var(--inner-button);
+	color: var(--text);
+	border: none;
+	border-radius: 7px;
+	font-size: 2rem;
+	user-select: none;
+
+	/* ANIMATION */
+	transition: 200ms ease-in-out;
+}
+
+.btn.edge {
+	background-color: var(--outer-button);
+}
+
+.btn:hover {
+	background-color: var(--outer-button);
+}
+
+.btn.edge:hover {
+	background-color: var(--inner-button);
+}
+
+.btn:active {
+	background-color: var(--background);
+}
+
+.btn.edge:active {
+	background-color: var(--background);
+}
+
+@media (max-width: 800px) {
+	.calculator {
+		width: calc(100vw - 1rem);
+	}
+
+	body {
+		background-color: black;
+	}
+
+	.screen {
+		padding: 0;
+	}
+}
