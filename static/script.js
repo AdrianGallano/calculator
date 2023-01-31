@@ -1,4 +1,5 @@
 const keypad = document.getElementById("keypad")
+const backspaceImage = document.getElementById("backspc-img")
 let screenState = document.querySelector(".screen > p");
 
 keypad.addEventListener("click", (e) => {
@@ -10,7 +11,8 @@ keypad.addEventListener("click", (e) => {
 		screenState.textContent = screenState.textContent.slice(0, screenState.textContent.length - 1)
 	}
 
-	else if (e.target.dataset.num == "clear") {
+	else if (e.target.dataset.num == "clear") { // clear
 		screenState.textContent = ""
 	}
 })
+

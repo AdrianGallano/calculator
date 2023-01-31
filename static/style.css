@@ -1,8 +1,9 @@
 :root {
 	--background: rgb(8, 8, 8);
-	--text: rgb(220, 219, 219);
-	--inner-button: rgba(70, 70, 70, 0.15);
-	--outer-button: rgba(50, 50, 50, 0.15);
+	--text: rgb(245, 245, 245);
+	--inner-button: rgba(69, 69, 69, 0.6);
+	--outer-button: rgba(50, 50, 50, 0.6);
+	--blur-bg: 10px;
 	font-size: 10px;
 }
 
@@ -76,12 +77,13 @@ body {
 	color: var(--text);
 	border: none;
 	border-radius: 7px;
-	font-size: 2rem;
+	font-size: 2.5rem;
 	user-select: none;
-	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(--blur-bg);
+	backdrop-filter: blur(--blur-bg);
 
 	/* ANIMATION */
-	transition: 200ms ease-in-out;
+	transition: 100ms;
 }
 
 .btn.edge {
