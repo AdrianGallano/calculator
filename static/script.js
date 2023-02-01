@@ -10,6 +10,23 @@ const operation = {
 	"Clear": function () {
 		screenState.textContent = ""
 	},
+	"Change-sign": function(){
+		if(screenState.textContent.includes("-")){
+			screenState.textContent = screenState.textContent.slice(1)
+		}else{
+			screenState.textContent = `-${screenState.textContent}`
+		}
+	},
+	".": function(){
+		if(screenState.textContent.includes(".")) return;
+
+		screenState.textContent += `.`
+	},
+	"%": function(){
+		if(screenState.textContent.includes("%") && screenState.textContent.length <= 16) return;
+
+		screenState.textContent = Number(screenState.textContent) / 100
+	}
 
 }
 
@@ -25,7 +42,7 @@ document.addEventListener("keydown", (e) => {
 function displayScreen(buttonPressed) {
 		if (buttonPressed.match(/[0-9]/)) { // if numbers
 
-			if (screenState.textContent.length >= 17) return;
+			if (screenState.textContent.length >= 16) return;
 
 			screenState.textContent += buttonPressed
 
@@ -33,8 +50,10 @@ function displayScreen(buttonPressed) {
 
 			operation[buttonPressed]()
 		}
-
-	numState = Number(screenState.textContent)
+	if(screenState.textContent.length > 16){
+		screenState.textContent = Number(screenState.textContent).toExponential();
+	}
+		numState = Number(screenState.textContent)
 	console.log(numState)
 }
 
