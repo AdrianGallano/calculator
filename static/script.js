@@ -1,18 +1,31 @@
 const keypad = document.getElementById("keypad")
-const backspaceImage = document.getElementById("backspc-img")
+const calculatorPattern = /[0-9\+\-\*\/]/;
 let screenState = document.querySelector(".screen > p");
 
 keypad.addEventListener("click", (e) => {
-	if (e.target.dataset.num.match(/[0-9]/)) { // if numbers
-		screenState.textContent += e.target.dataset.num
-	}
-
-	else if (e.target.dataset.num == "backspace") { // if backspace
-		screenState.textContent = screenState.textContent.slice(0, screenState.textContent.length - 1)
-	}
-
-	else if (e.target.dataset.num == "clear") { // clear
-		screenState.textContent = ""
-	}
+	displayScreen(e.target.dataset.num)
 })
+
+document.addEventListener("keydown", (e) => {
+	if(!e.key.match(calculatorPattern) && e.key != "Backspace") return;
+	displayScreen(e.key)
+})
+
+
+function displayScreen(buttonPressed){
+	if (buttonPressed.match(/[0-9]/)) { // if numbers
+		screenState.textContent += buttonPressed
+	}else{ /* if operations */
+
+		if (buttonPressed == "Backspace") { // if backspace
+			screenState.textContent = screenState.textContent.slice(0, screenState.textContent.length - 1)
+		}
+	
+		else if (buttonPressed == "clear") { // clear
+			screenState.textContent = ""
+		}
+	}
+
+
+}
 
