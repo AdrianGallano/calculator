@@ -1,5 +1,6 @@
+const popUp = document.getElementById("pop-up-container")
 const keypad = document.getElementById("keypad")
-const calculatorPattern = /[0-9\+\-\*\/\.\%\=]/;
+const calculatorPattern = /[0-9\+\-\*\/\.\%\=]/
 let screenState = document.querySelector(".screen > p");
 let pastScreenState = document.querySelector(".past-screen > p")
 let pastOperator;
@@ -129,3 +130,12 @@ function changeScreen(operator){
 }
 
 
+window.addEventListener("load", () => {
+	popUp.style.display = "flex"
+})
+
+popUp.firstElementChild.
+firstElementChild.
+lastElementChild.addEventListener("click", ()=>{
+	popUp.style.display = "none"
+})
