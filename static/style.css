@@ -1,8 +1,8 @@
 :root {
 	--background: rgb(8, 8, 8);
 	--text: rgb(245, 245, 245);
-	--inner-button: rgba(69, 69, 69, 0.6);
-	--outer-button: rgba(50, 50, 50, 0.6);
+	--inner-button: rgba(51, 51, 51, 0.6);
+	--outer-button: rgba(27, 27, 27, 0.6);
 	--blur-bg: 10px;
 
 	font-size: 10px;
@@ -17,25 +17,14 @@
 
 body {
 	background: linear-gradient(to bottom left, var(--background), rgb(14, 14, 14));
-	padding: .5rem;
+	background-color: black;
 }
 
 .calculator {
-	height: calc(100vh - 1em);
-	width: 65vw;
-}
-
-.linear-bg {
-	position: absolute;
-	height: 200px;
-	width: 200px;
-	z-index: -1;
-	top: -200px;
-
-	filter: blur(150px);
-	border-radius: 50%;
-	opacity: .9;
-	background-image: linear-gradient(-45deg, rgb(255, 255, 255) 50%, rgb(43, 114, 255) 50%);
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	padding: 1rem;
 }
 
 .past-screen {
@@ -53,38 +42,22 @@ body {
 
 	/* box customization */
 	height: 20%;
-	width: 100%;
 	padding: 0 .5rem 3rem .5rem;
 	color: var(--text);
 	font-size: 6rem;
 }
 
-.screen>p {
-	overflow: auto;
-	word-break: break-all;
-	text-align: end;
-}
-
-.screen::before {
-	position: absolute;
-	content: "16 digits limit";
-	color: rgb(78, 2, 2);
-	font-size: 1.3rem;
-	top: 10px;
-}
-
 #keypad {
 	display: flex;
 	flex-direction: column;
-	height: 65%;
-	gap: .4rem;
-	z-index: 1;
+	flex: 1;
+	gap: .5rem;
 }
 
 .row {
 	display: flex;
 	flex: 1;
-	gap: .4rem;
+	gap: .5rem;
 }
 
 .btn {
@@ -106,38 +79,44 @@ body {
 	backdrop-filter: blur(--blur-bg);
 
 	/* ANIMATION */
-	transition: 100ms;
 }
 
-.btn.edge {
-	background-color: var(--outer-button);
-	font-size: 2rem;
-}
-
+.btn.edge,
 .btn:hover {
 	background-color: var(--outer-button);
+	font-size: 3rem;
+	transition: 100ms;
+
 }
 
 .btn.edge:hover {
 	background-color: var(--inner-button);
+	transition: 50ms;
+
 }
 
-.btn:active {
-	background-color: var(--background);
-}
-
+.btn:active,
 .btn.edge:active {
 	background-color: var(--background);
+
 }
 
 .btn:focus {
 	outline: none;
 }
 
-button[data-num="Equal"] {
+button[data-num="="] {
 	color: white;
 	background-color: #c52929 !important;
 	font-size: 3rem !important;
+}
+
+button[data-num="="]:hover{
+	background-color: #961c1c !important;
+}
+
+button[data-num="="]:active{
+	background-color: #3f0e0e !important;
 }
 
 #pop-up-container {
@@ -145,15 +124,12 @@ button[data-num="Equal"] {
 	position: absolute;
 	justify-content: center;
 	align-items: center;
-	height: calc(100% - 1rem);
-	width: calc(100% - 1rem);
-
+	height: 100%;
+	width: 100%;
 	background-color: rgba(0, 0, 0, 0.473);
 	backdrop-filter: blur(10px);
-	transform: 300ms;
-
+	z-index: 1;
 }
-
 
 #pop-up {
 	height: 30%;
@@ -197,18 +173,9 @@ button[data-num="Equal"] {
 }
 
 @media (max-width: 800px) {
-	.calculator {
-		width: calc(100vw - 1rem);
-	}
-
-	body {
-		background-color: black;
-	}
-
 	.past-screen {
 		font-size: 2rem;
 	}
-	
 
 	.screen {
 		padding: 2rem 0;
